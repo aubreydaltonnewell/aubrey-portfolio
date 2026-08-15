@@ -247,13 +247,14 @@
         if(provider === 'vimeo'){
           src = 'https://player.vimeo.com/video/' + id + (hash ? '?h=' + hash + '&autoplay=1' : '?autoplay=1');
         } else {
-          src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0' + (start ? '&start=' + start : '');
+          src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0' + (start ? '&start=' + start : '');
         }
         var thumb = card.querySelector('.video-thumb');
         var iframe = document.createElement('iframe');
         iframe.src = src;
         iframe.title = 'Video player';
         iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
         iframe.allowFullscreen = true;
         thumb.innerHTML = '';
         thumb.appendChild(iframe);
