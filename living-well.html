@@ -104,6 +104,46 @@
     border:1px solid var(--line); border-radius:2px; color:var(--muted);
   }
 
+  .course-groups{display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); border:1px solid var(--line);}
+  @media (max-width:760px){.course-groups{grid-template-columns:1fr;}}
+  .course-group{background:var(--bg); padding:32px;}
+  .course-group-label{
+    font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--amber);
+    text-transform:uppercase; letter-spacing:.08em; margin-bottom:20px; display:block;
+    border-bottom:1px solid var(--line); padding-bottom:16px;
+  }
+  .course-list{list-style:none;}
+  .course-list li{
+    padding:0; border-bottom:1px solid var(--line);
+  }
+  .course-list li:last-child{border-bottom:none;}
+  .course-list li a{
+    display:flex; align-items:center; gap:10px;
+    font-size:15px; color:var(--text); padding:12px 0 12px 20px;
+    position:relative; transition:color .15s ease, padding-left .15s ease;
+  }
+  .course-list li a::before{
+    content:"—"; position:absolute; left:0; color:var(--muted);
+  }
+  .course-list li a::after{
+    content:"↗"; font-size:12px; color:var(--muted); margin-left:auto; opacity:0; transition:opacity .15s ease;
+  }
+  .course-list li a:hover, .course-list li a:focus-visible{color:var(--amber); padding-left:24px;}
+  .course-list li a:hover::after, .course-list li a:focus-visible::after{opacity:1;}
+
+  .social-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .social-card{
+    display:flex; align-items:center; gap:14px;
+    border:1px solid var(--line); border-radius:3px; padding:18px 22px;
+    background:var(--surface); min-width:240px; flex:1;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .social-card:hover, .social-card:focus-visible{border-color:var(--amber); transform:translateY(-2px);}
+  .social-icon{width:26px; height:26px; color:var(--amber); flex-shrink:0;}
+  .social-icon svg{width:100%; height:100%;}
+  .social-k{display:block; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px;}
+  .social-v{display:block; font-size:15px;}
+
   footer{border-top:1px solid var(--line); padding:32px 0;}
   .footer-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
 </style>
@@ -122,7 +162,7 @@
     <div class="wrap">
       <span class="eyebrow">Scene 02 · Course &amp; YouTube</span>
       <h1>Living Well with Dr. Michelle</h1>
-      <p class="lede">Long-form YouTube production and course content across 10+ programs — helping grow the channel to 208K+ subscribers and 30M+ views, and producing video and photography for the brand's product line.</p>
+      <p class="lede">Working for Living Well with Dr. Michelle Jorgensen, specializing in video production, filming, editing, writing, and product photography — from long-form YouTube education to dental professional training content.</p>
     </div>
   </section>
 
@@ -138,7 +178,7 @@
       </div>
       <div class="meta-item">
         <span class="meta-k">Scope</span>
-        <span class="meta-v">YouTube, Course Content, Product Video &amp; Photo</span>
+        <span class="meta-v">Video, Filming, Editing, Writing, Photography</span>
       </div>
     </div>
   </div>
@@ -155,19 +195,78 @@
   <section style="padding-top:0;">
     <div class="wrap prose">
       <h2 class="section-title">About the Project</h2>
-      <p>I produce, direct, and edit long-form YouTube content for Living Well with Dr. Michelle, contributing to the channel's growth to 208K+ subscribers, 30.6M+ views, and 825K+ hours watched.</p>
-      <p>Alongside the channel, I produce video content for 10+ online courses and masterclasses, and create product videos and photography used in advertisements and promotions for the brand's product line.</p>
-      <div class="tags">
-        <span class="tag">Health-Based Dentistry Mini Residency</span>
-        <span class="tag">Dental Ozone Masterclass</span>
-        <span class="tag">The Cell Well Blueprint</span>
-        <span class="tag">Real Food for Real Families</span>
+      <p>I work for Living Well with Dr. Michelle Jorgensen, specializing in video production, filming, editing, writing, and product photography. I produce long-form YouTube educational videos, dental professional training content, social media content, advertisements, and video coursework.</p>
+      <p>On the YouTube side, that work has contributed to the channel's growth to 208K+ subscribers, 30.6M+ views, and 825K+ hours watched. I also produce video content for 10+ online courses and masterclasses, and create product videos and photography used in advertisements and promotions for the brand's product line.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <h2 class="section-title">Courses &amp; Masterclasses</h2>
+      <div class="course-groups">
+        <div class="course-group">
+          <span class="course-group-label">Living Well with Dr. Michelle</span>
+          <ul class="course-list">
+            <li><a href="https://livingwellwithdrmichelle.com/collections/classes/products/healthy-mouth-healthy-you-masterclass" target="_blank" rel="noopener">The Healthy Mouth, Healthy You Masterclass</a></li>
+            <li><a href="https://livingwellwithdrmichelle.com/collections/classes?page=1#df112acf597151309a3719fc899bbf29" target="_blank" rel="noopener">Family Food Security Masterclass</a></li>
+            <li><a href="https://livingwellwithdrmichelle.com/collections/classes/products/gardening-through-the-seasons-masterclass" target="_blank" rel="noopener">Gardening Through the Seasons Masterclass</a></li>
+            <li><a href="https://livingwellwithdrmichelle.com/collections/classes/products/real-food-for-real-families-masterclass" target="_blank" rel="noopener">Real Food for Real Families Masterclass</a></li>
+            <li><a href="https://livingwellwithdrmichelle.com/collections/classes/products/summer-gardening-and-food-security-workshop" target="_blank" rel="noopener">Summer Gardening and Food Security Workshop</a></li>
+            <li><a href="https://livingwellwithdrmichelle.com/collections/classes/products/making-bread-the-natural-way-masterclass" target="_blank" rel="noopener">Making Bread the Natural Way Masterclass</a></li>
+            <li><a href="https://livingwellwithdrmichelle.com/collections/classes/products/cell-well-blueprint-a-step-by-step-online-course-for-optimal-health-energy" target="_blank" rel="noopener">The Cell Well Blueprint: A Step-by-Step Online Course for Optimal Health &amp; Energy</a></li>
+          </ul>
+        </div>
+        <div class="course-group">
+          <span class="course-group-label">Living Well Professional</span>
+          <ul class="course-list">
+            <li><a href="https://livingwellprofessionals.com/sp/health-based-dentistry-mini-residency/" target="_blank" rel="noopener">The Health-Based Dentistry Mini Residency</a></li>
+            <li><a href="https://livingwellprofessionals.com/sp/dental-ozone-masterclass/" target="_blank" rel="noopener">The Dental Ozone Masterclass</a></li>
+            <li><a href="https://livingwellprofessionals.com/sp/safe-mercury-removal-masterclass/" target="_blank" rel="noopener">The Safe Mercury Removal Masterclass</a></li>
+            <li><a href="https://livingwellprofessionals.com/sp/healthy-mouth-health-you-masterclass-sp/" target="_blank" rel="noopener">The Healthy Mouth Healthy You Course</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <h2 class="section-title">Follow the Brand</h2>
+      <div class="social-row">
+        <a class="social-card" href="https://www.instagram.com/livingwellwithdrmichelle/" target="_blank" rel="noopener">
+          <span class="social-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          </span>
+          <span>
+            <span class="social-k">Instagram</span>
+            <span class="social-v">@livingwellwithdrmichelle</span>
+          </span>
+        </a>
+        <a class="social-card" href="https://www.facebook.com/livingwellwithdrmichelle" target="_blank" rel="noopener">
+          <span class="social-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 4h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z"/></svg>
+          </span>
+          <span>
+            <span class="social-k">Facebook</span>
+            <span class="social-v">Living Well with Dr. Michelle</span>
+          </span>
+        </a>
+        <a class="social-card" href="https://www.youtube.com/@LivingwellwithDrMichelle" target="_blank" rel="noopener">
+          <span class="social-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10.5 9.2 15 12l-4.5 2.8z" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <span>
+            <span class="social-k">YouTube</span>
+            <span class="social-v">@LivingwellwithDrMichelle</span>
+          </span>
+        </a>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
+
   <div class="wrap footer-row">
     <span>© 2026 Aubrey Dalton Newell</span>
     <a href="index.html">aubreydaltonnewell.github.io</a>
