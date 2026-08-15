@@ -175,6 +175,13 @@
   }
   .frame-title{font-family:'Anton',sans-serif; font-size:26px; text-transform:uppercase; margin-bottom:8px; line-height:1.05;}
   .frame-desc{font-size:14px; color:var(--muted); max-width:38ch;}
+  .frame-cta{
+    display:inline-flex; align-items:center; gap:6px; margin-top:18px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--amber);
+  }
+  .frame:hover .frame-cta, .frame:focus-visible .frame-cta{gap:10px;}
+  .frame-cta span{transition:transform .15s ease;}
   .frame-1::before{background:linear-gradient(135deg,#2A1B12,#0B0C0E 70%);}
   .frame-2::before{background:linear-gradient(135deg,#0F1E1C,#0B0C0E 70%);}
   .frame-3::before{background:linear-gradient(135deg,#241A2E,#0B0C0E 70%);}
@@ -290,26 +297,27 @@
       </div>
     </div>
     <div class="work-grid">
-      <a href="#" class="frame frame-1">
+      <a href="total-care-dental.html" class="frame frame-1">
         <div class="frame-slate">SCENE 01 <span>·</span> BRAND &amp; SOCIAL</div>
         <div class="frame-title">Total Care Dental &amp; Wellness</div>
         <p class="frame-desc">Full-scope creative direction — social strategy, ad campaigns, patient education video, and print, driving significant growth in new patient acquisition.</p>
+        <span class="frame-cta">View Project <span aria-hidden="true">→</span></span>
       </a>
-      <a href="#" class="frame frame-2">
+      <div class="frame frame-2">
         <div class="frame-slate">SCENE 02 <span>·</span> COURSE &amp; YOUTUBE</div>
         <div class="frame-title">Living Well with Dr. Michelle</div>
         <p class="frame-desc">Long-form YouTube production and course content across 10+ programs — grew the channel to 208K+ subscribers and 30M+ views.</p>
-      </a>
-      <a href="#" class="frame frame-3">
+      </div>
+      <div class="frame frame-3">
         <div class="frame-slate">SCENE 03 <span>·</span> PRODUCT LAUNCH</div>
         <div class="frame-title">Product Line Launch</div>
         <p class="frame-desc">Video, photography, and commercial content that helped launch a health-product line into a thriving business.</p>
-      </a>
-      <a href="#" class="frame frame-4">
+      </div>
+      <div class="frame frame-4">
         <div class="frame-slate">SCENE 04 <span>·</span> INDEPENDENT FILM</div>
         <div class="frame-title">Filmmaking &amp; Shorts</div>
         <p class="frame-desc">40+ short films and live productions across two decades, with multiple award wins and festival selections.</p>
-      </a>
+      </div>
     </div>
     <div class="wrap" style="margin-top:24px;">
       <p class="mono" style="font-size:12px; color:var(--muted);">— Replace these frames with real thumbnails, embedded reels, or links to individual case studies as your portfolio comes together.</p>
