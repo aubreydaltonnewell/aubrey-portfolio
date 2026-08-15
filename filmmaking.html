@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Filmmaking &amp; Shorts — Aubrey Dalton Newell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0C0E;
+    --surface:#15171B;
+    --surface-2:#1D2025;
+    --line:#2B2E34;
+    --text:#F2EFE9;
+    --muted:#93969E;
+    --amber:#E8A33D;
+    --cyan:#5FD9CB;
+    --max:1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+  }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .display{font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  :focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
+
+  header{
+    border-bottom:1px solid var(--line);
+    padding:20px 0;
+    position:sticky; top:0; background:rgba(11,12,14,.9); backdrop-filter:blur(10px); z-index:10;
+  }
+  .header-row{display:flex; justify-content:space-between; align-items:center;}
+  .brand{font-family:'Anton',sans-serif; font-size:16px; letter-spacing:.06em;}
+  .brand span{color:var(--amber);}
+  .back-link{
+    font-family:'JetBrains Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--muted); display:inline-flex; align-items:center; gap:8px;
+  }
+  .back-link:hover, .back-link:focus-visible{color:var(--amber);}
+
+  .hero{padding:80px 0 56px;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--amber);
+    letter-spacing:.1em; text-transform:uppercase; margin-bottom:16px; display:block;
+  }
+  h1{font-size:clamp(36px,6vw,64px); line-height:1.02; margin-bottom:22px; max-width:18ch;}
+  .lede{color:var(--muted); font-size:18px; max-width:62ch;}
+
+  .meta-strip{
+    display:flex; flex-wrap:wrap; gap:0; border-bottom:1px solid var(--line); border-top:1px solid var(--line); background:var(--surface);
+  }
+  .meta-item{padding:26px 32px; border-left:1px solid var(--line); flex:1; min-width:160px;}
+  .meta-item:first-child{border-left:none;}
+  .meta-k{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px; display:block;}
+  .meta-v{font-size:15px;}
+
+  section{padding:72px 0;}
+  h2.section-title{font-size:clamp(24px,3.2vw,32px); margin-bottom:32px;}
+
+  .video-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:920px){.video-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:600px){.video-grid{grid-template-columns:1fr;}}
+  .video-card{
+    display:block; border:1px solid var(--line); background:var(--surface); border-radius:3px; overflow:hidden;
+    transition:border-color .15s ease, transform .15s ease; cursor:pointer;
+  }
+  .video-card:hover, .video-card:focus-visible{border-color:var(--amber); transform:translateY(-2px);}
+  .video-thumb{position:relative; aspect-ratio:16/9; background:var(--surface-2);}
+  .video-thumb img{width:100%; height:100%; object-fit:cover;}
+  .video-thumb iframe{width:100%; height:100%; border:0; display:block;}
+  .play-badge{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    background:rgba(11,12,14,.2);
+  }
+  .play-badge::after{
+    content:""; width:0; height:0;
+    border-top:9px solid transparent; border-bottom:9px solid transparent;
+    border-left:14px solid var(--text); margin-left:3px;
+    filter:drop-shadow(0 1px 3px rgba(0,0,0,.5));
+  }
+  .video-card:hover .play-badge::after{border-left-color:var(--amber);}
+  .video-label{padding:16px 18px; font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em;}
+
+  .prose p{color:var(--text); font-size:17px; margin-bottom:20px; max-width:66ch;}
+
+  .awards{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .awards-inner{display:flex; align-items:center; gap:40px; flex-wrap:wrap;}
+  .awards-badge{
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+    border:1px solid var(--amber); color:var(--amber); padding:8px 14px; border-radius:2px; white-space:nowrap;
+  }
+  .awards-text{color:var(--muted); font-size:15px; max-width:60ch;}
+
+  footer{border-top:1px solid var(--line); padding:32px 0;}
+  .footer-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a href="index.html" class="brand">AUBREY<span>.</span>NEWELL</a>
+    <a href="index.html#work" class="back-link"><span aria-hidden="true">←</span> Back to Work</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom:0;">
+    <div class="wrap">
+      <span class="eyebrow">Scene 04 · Independent Film</span>
+      <h1>Filmmaking &amp; Shorts</h1>
+      <p class="lede">40+ short films and live productions across two decades, with multiple award wins and festival selections — an independent filmmaker's eye that shapes every project I direct.</p>
+    </div>
+  </section>
+
+  <div class="meta-strip">
+    <div class="wrap" style="display:flex; padding:0;">
+      <div class="meta-item">
+        <span class="meta-k">Role</span>
+        <span class="meta-v">Director / Cinematographer</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-k">Timeline</span>
+        <span class="meta-v">2003 – Present</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-k">Scope</span>
+        <span class="meta-v">Short Films, Live Productions</span>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Featured Films</h2>
+      <div class="video-grid">
+        <div class="video-card" data-provider="youtube" data-video-id="MBtDznVp9q8" tabindex="0" role="button" aria-label="Play video 1">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/MBtDznVp9q8/hqdefault.jpg" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Play video</div>
+        </div>
+        <div class="video-card" data-provider="youtube" data-video-id="9WLT-QxgbZ8" tabindex="0" role="button" aria-label="Play video 2">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/9WLT-QxgbZ8/hqdefault.jpg" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Play video</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="awards" style="padding:56px 0;">
+    <div class="wrap awards-inner">
+      <span class="awards-badge">Award-Winning Filmmaker</span>
+      <p class="awards-text">Independent filmmaker with an award-winning background, including multiple competition wins and film festival selections for short films and commercial work across two decades. Full filmography and reel available on request.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap prose">
+      <h2 class="section-title">About the Work</h2>
+      <p>Outside of client and brand work, I'm an independent filmmaker with a background spanning short films, live productions, and commercial work across two decades — 40+ projects and counting.</p>
+      <p>That independent filmmaking background shapes how I think about story, pacing, and audience connection in everything I direct, from client campaigns to long-form YouTube content.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Aubrey Dalton Newell</span>
+    <a href="index.html">aubreydaltonnewell.github.io</a>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var cards = document.querySelectorAll('.video-card');
+    cards.forEach(function(card){
+      function play(){
+        var id = card.getAttribute('data-video-id');
+        var src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&fs=1&playsinline=1';
+        var thumb = card.querySelector('.video-thumb');
+        var iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.title = 'YouTube video player';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        iframe.allowFullscreen = true;
+        thumb.innerHTML = '';
+        thumb.appendChild(iframe);
+        var label = card.querySelector('.video-label');
+        if(label) label.textContent = 'Now Playing';
+        card.removeAttribute('tabindex');
+        card.removeAttribute('role');
+        card.style.cursor = 'default';
+      }
+      card.addEventListener('click', play);
+      card.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          play();
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
