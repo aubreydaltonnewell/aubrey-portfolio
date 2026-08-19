@@ -100,6 +100,22 @@
 
   footer{border-top:1px solid var(--line); padding:32px 0;}
   .footer-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
+
+  .video-modal{position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; padding:5vw;}
+  .video-modal.open{display:flex;}
+  .video-modal-backdrop{position:absolute; inset:0; background:rgba(6,6,7,.92);}
+  .video-modal-inner{position:relative; width:100%; max-width:1120px; z-index:1;}
+  .video-modal-frame{width:100%; aspect-ratio:16/9; background:#000;}
+  .video-modal-frame iframe{width:100%; height:100%; border:0; display:block;}
+  .video-modal-close{
+    position:absolute; top:-48px; right:0;
+    width:36px; height:36px; border-radius:50%;
+    background:var(--surface); border:1px solid var(--line); color:var(--text);
+    font-size:16px; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .video-modal-close:hover, .video-modal-close:focus-visible{border-color:var(--amber); color:var(--amber);}
 </style>
 </head>
 <body>
@@ -163,6 +179,10 @@
     var videos = [
       { provider: "vimeo", id: "1175634235", hash: "a5ada99845", label: "Gum Health Tooth Powder" },
       { provider: "vimeo", id: "1175808598", hash: "40ea74fec7", label: "Tooth Remineralization Supplements" },
+      { provider: "vimeo", id: "1175160410", hash: "7cb3277646", label: "Remineralizing Tooth Powder" },
+      { provider: "vimeo", id: "1175592290", hash: "83eb5f0917", label: "Whitening Tooth Powder" },
+      { provider: "vimeo", id: "1175597602", hash: "21174328ac", label: "Remineralizing Citrus (Kids) Tooth Powder" },
+      { provider: "vimeo", id: "1175629771", hash: "cab006d00c", label: "Sensitive Remineralizing Tooth Powder" },
       // TODO: add vimeo.com/1175817143 once the public share link (with hash) is provided
       { provider: "youtube", id: "DBrS3U6b9KU" },
       { provider: "youtube", id: "Ex7eWGt7wSY" },
@@ -188,7 +208,11 @@
 
     var vimeoThumbs = {
       "1175634235": "https://i.vimeocdn.com/video/2136736253-38b5b1a0b53da016740dceb9fe497cf2a3ff94102b89ee7f779edd63499728de-d?f=webp&region=us",
-      "1175808598": "https://i.vimeocdn.com/video/2136727880-0eedd4dbcb162fbe18d2158d4e352d42fe5bd6666994eb6169969897eef6adb8-d?f=webp&region=us"
+      "1175808598": "https://i.vimeocdn.com/video/2136727880-0eedd4dbcb162fbe18d2158d4e352d42fe5bd6666994eb6169969897eef6adb8-d?f=webp&region=us",
+      "1175160410": "https://i.vimeocdn.com/video/2191936613-d9ea600fc2c2ab3e7e0fe25cddb4fae868a720398870f13605a34e9126578122-d?f=webp&region=us",
+      "1175592290": "https://i.vimeocdn.com/video/2191936485-0387ac7af321b459361f290e252b8c7599a59db249203392ca13faf9c8cf1135-d?f=webp&region=us",
+      "1175597602": "https://i.vimeocdn.com/video/2191936406-657feaf988b24b46f97bcb3faf762a81d38198bac63f428d8049b9fa5b226e31-d?f=webp&region=us",
+      "1175629771": "https://i.vimeocdn.com/video/2191936259-8be329e94f59379f158a7c5be0f50703ee59da7a501132dc7b8e0208fb11c943-d?f=webp&region=us"
     };
 
     videos.forEach(function(v, i){
@@ -218,24 +242,11 @@
       var hash = card.getAttribute('data-hash');
       var src;
       if(provider === 'vimeo'){
-        src = 'https://player.vimeo.com/video/' + id + '?' + (hash ? 'h=' + hash + '&' : '') + 'autoplay=1&title=0&byline=0&portrait=0&dnt=1';
+        src = 'https://player.vimeo.com/video/' + id + '?' + (hash ? 'h=' + hash + '&' : '') + 'autoplay=1&title=0&byline=0&portrait=0&dnt=1&transparent=0';
       } else {
-        src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&fs=1&playsinline=1';
+        src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&fs=1&playsinline=1';
       }
-      var thumb = card.querySelector('.video-thumb');
-      var iframe = document.createElement('iframe');
-      iframe.src = src;
-      iframe.title = 'Video player';
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
-      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-      iframe.allowFullscreen = true;
-      thumb.innerHTML = '';
-      thumb.appendChild(iframe);
-      var label = card.querySelector('.video-label');
-      if(label) label.textContent = 'Now Playing';
-      card.removeAttribute('tabindex');
-      card.removeAttribute('role');
-      card.style.cursor = 'default';
+      openVideoModal(src);
     }
 
     grid.addEventListener('click', function(e){
@@ -252,7 +263,45 @@
       }
     });
   })();
+
+  // Shared video modal
+  function openVideoModal(src){
+    var modal = document.getElementById('videoModal');
+    var frame = document.getElementById('videoModalFrame');
+    var iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.title = 'Video player';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.allowFullscreen = true;
+    frame.innerHTML = '';
+    frame.appendChild(iframe);
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('videoModalClose').focus();
+  }
+  function closeVideoModal(){
+    var modal = document.getElementById('videoModal');
+    document.getElementById('videoModalFrame').innerHTML = '';
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('videoModalBackdrop').addEventListener('click', closeVideoModal);
+  document.getElementById('videoModalClose').addEventListener('click', closeVideoModal);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeVideoModal();
+  });
 </script>
+
+<div class="video-modal" id="videoModal" aria-hidden="true">
+  <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="videoModalClose" aria-label="Close video">✕</button>
+    <div class="video-modal-frame" id="videoModalFrame"></div>
+  </div>
+</div>
 
 </body>
 </html>
