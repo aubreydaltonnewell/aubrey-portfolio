@@ -110,6 +110,32 @@
 
   .prose p{color:var(--text); font-size:17px; margin-bottom:20px; max-width:66ch;}
 
+  .social-video-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));
+    gap:14px;
+  }
+  .reel-card{
+    display:block; border:1px solid var(--line); background:var(--surface); border-radius:3px; overflow:hidden;
+    transition:border-color .15s ease, transform .15s ease; cursor:pointer;
+  }
+  .reel-card:hover, .reel-card:focus-visible{border-color:var(--amber); transform:translateY(-2px);}
+  .reel-thumb{position:relative; aspect-ratio:9/16; background:var(--surface-2);}
+  .reel-thumb img{width:100%; height:100%; object-fit:cover;}
+  .reel-thumb .play-badge{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    background:rgba(11,12,14,.2);
+  }
+  .reel-thumb .play-badge::after{
+    content:""; width:0; height:0;
+    border-top:8px solid transparent; border-bottom:8px solid transparent;
+    border-left:12px solid var(--text); margin-left:2px;
+    filter:drop-shadow(0 1px 3px rgba(0,0,0,.5));
+  }
+  .reel-card:hover .play-badge::after{border-left-color:var(--amber);}
+  .reel-label{
+    padding:10px 10px; font-size:12px; color:var(--muted); line-height:1.35;
+  }
+
   footer{border-top:1px solid var(--line); padding:32px 0;}
   .footer-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
 
@@ -118,6 +144,14 @@
   .video-modal-backdrop{position:absolute; inset:0; background:rgba(6,6,7,.92);}
   .video-modal-inner{position:relative; width:min(1120px, 94vw, 142vh); z-index:1;}
   .video-modal-frame{width:100%; aspect-ratio:16/9; background:#000;}
+  .video-modal-inner.portrait{width:auto; height:85vh; max-height:85vh;}
+  .video-modal-inner.portrait .video-modal-frame{
+    width:auto; height:100%; aspect-ratio:9/16; margin:0 auto; max-width:94vw;
+  }
+  @media (max-width:600px){
+    .video-modal-inner.portrait{width:100vw; height:100vh; max-height:100vh;}
+    .video-modal-inner.portrait .video-modal-frame{max-width:100vw; height:100%;}
+  }
   .video-modal-frame iframe{width:100%; height:100%; border:0; display:block;}
   .video-modal-close{
     position:absolute; top:10px; right:10px; z-index:2;
@@ -145,11 +179,11 @@
 </header>
 
 <main>
-  <section class="hero" style="padding-bottom:0; border-bottom:none;">
+  <section class="hero" style="padding-bottom:32px; border-bottom:none;">
     <div class="wrap">
       <span class="eyebrow">Scene 01 · Brand &amp; Social</span>
       <h1>Total Care Dental &amp; Wellness</h1>
-      <p class="lede">Managing the brand image for a growing dental and wellness practice — graphics, website, video, ad campaigns, and social media, working together to help the practice expand and grow.</p>
+      <p class="lede">Served as Creative Director and Marketing Manager for a successful and growing dental and wellness practice, driving brand strategy, advertising campaigns, video production, website development, social media, and graphic design to expand the practice, strengthen its brand presence, and support continued growth.</p>
     </div>
   </section>
 
@@ -157,7 +191,7 @@
     <div class="wrap" style="display:flex; padding:0;">
       <div class="meta-item">
         <span class="meta-k">Role</span>
-        <span class="meta-v">Creative Director</span>
+        <span class="meta-v">Creative Director &amp; Marketing Management</span>
       </div>
       <div class="meta-item">
         <span class="meta-k">Timeline</span>
@@ -165,16 +199,23 @@
       </div>
       <div class="meta-item">
         <span class="meta-k">Scope</span>
-        <span class="meta-v">Video, Ads, Social, Website, Graphics, Print, Events</span>
+        <span class="meta-v">Video Production, Advertising, Creative Writing, Photography, Website, Social Media, Graphic Design, Print, and Events</span>
       </div>
     </div>
   </div>
 
-  <section>
+  <section style="padding-top:48px; padding-bottom:32px;">
+    <div class="wrap prose">
+      <h2 class="section-title">About the Role</h2>
+      <p>As Creative Director, I worked with the marketing team to build and strengthen the brand identity for Total Care Dental & Wellness and Total Care Kids, leading creative across video, advertising, social media, website, graphics, print, and events.</p>
+      <p>By creating a consistent brand experience across every customer touchpoint, we strengthened brand recognition and trust, supported marketing initiatives, and contributed to the continued growth and expansion of both practices.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
     <div class="wrap">
       <h2 class="section-title">Featured Videos</h2>
       <div class="video-grid">
-        <!-- TODO: replace with vimeo.com/667373339 once full share link (with hash, if private) is provided -->
         <div class="video-card" data-provider="vimeo" data-video-id="1204726199" data-hash="d165b4f2e1" tabindex="0" role="button" aria-label="Play video: Total Care Dental - New Patient">
           <div class="video-thumb">
             <img src="https://i.vimeocdn.com/video/2173132691-3a721550db99279064bb01e99583c75cfc2da0918bc1f539295c2d94b068b55c-d?f=webp&amp;region=us" alt="" loading="lazy">
@@ -189,29 +230,261 @@
           </div>
           <div class="video-label">Total Care Kids — New Patient</div>
         </div>
-        <div class="video-card" data-provider="youtube" data-video-id="rRHcl4FiH_I" tabindex="0" role="button" aria-label="Play video">
+        <div class="video-card" data-provider="vimeo" data-video-id="667373339" data-hash="f66fed8373" tabindex="0" role="button" aria-label="Play video: Welcome to Total Care Dental and Wellness">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/1387894933-f9817ac51d263635f80d1efa62aefd2f3cdb79aa97cb3eb0b7e5992bc9407267-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Welcome to Total Care Dental &amp; Wellness</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="1132270328" data-hash="95ae86b0c9" tabindex="0" role="button" aria-label="Play video: Welcome To Total Care Kids">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/2076446831-7293a46ae0c1f98059fea662647a888c69b80a454534efbf7c3e78b6f5a34101-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Welcome To Total Care Kids</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="575089741" data-hash="2d5e35f066" tabindex="0" role="button" aria-label="Play video: Surgical Center at Total Care Dental and Wellness">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/1195213048-dbd7d64841aea4700d9344ddb20a0ad2696762ae40d5a8efaab2e51733b2b72f-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Surgical Center at Total Care Dental &amp; Wellness</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="952051920" data-hash="0d1b6cb5fa" tabindex="0" role="button" aria-label="Play video: Learn More About CandidPro Aligners">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/1861519188-0125be7b782ec4c2ebc049113f4a6e1b687f0c627e432c01153d52ec724eef11-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Learn More About CandidPro Aligners</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="888587933" data-hash="1cc1f011d0" tabindex="0" role="button" aria-label="Play video: Shifting Perspectives, The Amalgam Mercury Fillings Debate">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/2192320473-91d06ea4f122c036c6f15c976ec009746fbddc52ab61961c6824ee58623e9ead-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Shifting Perspectives: The Amalgam Mercury Fillings Debate</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="1145361250" data-hash="6c0229acb2" tabindex="0" role="button" aria-label="Play video: Why Choose Total Care Dental for Your Wisdom Teeth Extraction">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/2094300077-06224c2cb82db83090c8f6b49c3a150e6562cc86a2193c325e4231d98870bcc6-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Why Choose TCD for Your Wisdom Teeth Extraction</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="910270846" data-hash="73201f57d1" tabindex="0" role="button" aria-label="Play video: TMJ">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/1794494241-320a1d96dfd3095cda0c10c4dd3ad0d31c40b8f1dfea96e5a49084b0d8c68f90-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">TMJ</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="1111819549" data-hash="34e9dba57c" tabindex="0" role="button" aria-label="Play video: Mercury Filling Removal">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/2050153865-3be96f815ec27b9bba7da465f42c187f5637d6720e5eec8fa68d703f8bb13db7-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Mercury Filling Removal</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="1111819619" data-hash="f2a92ea6df" tabindex="0" role="button" aria-label="Play video: Ceramic Zirconia Implant">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/2050154402-0b27d5aa2edf8cfadcbba68c0038216dfd6df914ab8f42bd6a175d6c2da463e2-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Ceramic Zirconia Implant</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="1111819595" data-hash="8aaab2bad4" tabindex="0" role="button" aria-label="Play video: Gum Disease">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/2050154214-6900f25f7e5b09ef5929e7b9298f6c15d24e71e45edf098e4dc2a4f82a0a9cbb-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Gum Disease</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="1111819571" data-hash="d59b9ad670" tabindex="0" role="button" aria-label="Play video: Jaw Joint">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/2050154062-30e8b8ee680489edfa843caa9123245045a099a027d6d077aa4a970c2386287d-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Jaw Joint</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="1111819537" data-hash="b975c4e3c3" tabindex="0" role="button" aria-label="Play video: Mouth Palate Issues and Jaw Expansion">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/2050153716-a5a20d1f5e108b1d2e778f6b61c4fd71d4f648c4c2f0500b1c3d542d224154e4-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Mouth Palate Issues &amp; Jaw Expansion</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="1111819502" data-hash="b84cae0beb" tabindex="0" role="button" aria-label="Play video: TMJ Problems and Sleep Issues">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/2050153473-1cc986673e2771f040d891597a3b878dd894a4894664582ebece18c003c5f71f-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">TMJ Problems &amp; Sleep Issues</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="1111819447" data-hash="548b7d521e" tabindex="0" role="button" aria-label="Play video: Unhealed Dental Cavitations">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/2050153341-602b911a98c47445468394cb89e3963cea6b60c5889d5206a3f51caad7489f15-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Unhealed Dental Cavitations</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="1111819367" data-hash="5f94ad3fef" tabindex="0" role="button" aria-label="Play video: Airway Obstruction, Tongue Tie, Mouth Opening">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/2050153140-a82d6bb78b760e0eac6702764b6c903e513a7f11f13baea8b9e511a7d16bf797-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Airway Obstruction, Tongue Tie, Mouth Opening</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="1111819309" data-hash="4afb820e13" tabindex="0" role="button" aria-label="Play video: Wisdom Tooth Extraction">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/2050152846-d6cfc32c735b182ab25503b6d9a45e3dfe5dd788def0ede2a0291e00d0f1f92c-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Wisdom Tooth Extraction</div>
+        </div>
+        <div class="video-card" data-provider="youtube" data-video-id="rRHcl4FiH_I" tabindex="0" role="button" aria-label="Play video: Why Choose Total Care Dental for Pediatric Dentistry">
           <div class="video-thumb">
             <img src="https://img.youtube.com/vi/rRHcl4FiH_I/hqdefault.jpg" alt="" loading="lazy">
             <span class="play-badge"></span>
           </div>
-          <div class="video-label">Play video</div>
+          <div class="video-label">Why Choose Total Care Dental for Pediatric Dentistry?</div>
         </div>
-        <div class="video-card" data-provider="youtube" data-video-id="4_M3O5tGXqs" data-start="51" tabindex="0" role="button" aria-label="Play video">
+        <div class="video-card" data-provider="youtube" data-video-id="4_M3O5tGXqs" data-start="51" tabindex="0" role="button" aria-label="Play video: Root Cause Based Dentistry, More Than Just Fixing A Symptom">
           <div class="video-thumb">
             <img src="https://img.youtube.com/vi/4_M3O5tGXqs/hqdefault.jpg" alt="" loading="lazy">
             <span class="play-badge"></span>
           </div>
-          <div class="video-label">Play video</div>
+          <div class="video-label">Root Cause Based Dentistry — More Than Just Fixing A Symptom</div>
         </div>
       </div>
     </div>
   </section>
 
   <section style="padding-top:0;">
-    <div class="wrap prose">
-      <h2 class="section-title">About the Project</h2>
-      <p>I work with the marketing team to create the brand image for Total Care Dental & Wellness through content across video, ads, social media — including Instagram and Facebook — website, and graphics, so every touchpoint feels consistent and true to the practice's voice.</p>
-      <p>That work spans print materials and live event presence, alongside the day-to-day video and social content, all built around one goal: helping the market see and trust the brand. That consistent, full-scope presence has helped the practice expand and grow.</p>
+    <div class="wrap">
+      <h2 class="section-title">Example Social Media Content</h2>
+      <div class="social-video-grid">
+        <div class="reel-card" data-video-id="1219964809" data-hash="79f66db5cf" tabindex="0" role="button" aria-label="Play video: Learn More About CandidPro">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292327-3c93c074342a3aa5fbab3632dfb4d6da158bac61a1eb0f2baf98ee4779366107-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Learn More About CandidPro</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964781" data-hash="f878fe0089" tabindex="0" role="button" aria-label="Play video: Meet Dr. Alexa McAneney">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292319-e438c16a5f3138d60e25f78b5711f71c5e681bbc35e829b8bb92b4946a4739a0-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Meet Dr. Alexa McAneney</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964716" data-hash="b679670945" tabindex="0" role="button" aria-label="Play video: Mercury in Your Mouth">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292223-10292a505bb50c73ba3157dcdd7ca0d7e09790bfadd55fb5129502843c90081c-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Mercury in Your Mouth? Let's Fix That</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964782" data-hash="17408d6330" tabindex="0" role="button" aria-label="Play video: Meet Dr. Thometz">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292297-daef9e3cd3bb245d5fbfa785a40369c538409ef854732d081ccf48b5b6107899-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Meet Dr. Thometz</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964741" data-hash="266318b525" tabindex="0" role="button" aria-label="Play video: Thinking About a Dental Implant">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292245-3405165464cc8d35ad0e2e0203c229e9496d9675ef3f7a0b0b6749415246f54f-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Thinking About a Dental Implant?</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964744" data-hash="8e1b0c605e" tabindex="0" role="button" aria-label="Play video: It's All About You">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292248-ae172f7f077f5b1a57f56057da4e5e70a0a64fd1f12ef3e6671054e770c635e2-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">It's All About You</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964757" data-hash="a805ef34f9" tabindex="0" role="button" aria-label="Play video: Why I Use PRF in Dentistry">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292286-300c59b0b39ddc52812cff003ad9d6f50bf17f0c1f6b084d63f324b0eae2ada6-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Why I Use PRF in Dentistry</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964754" data-hash="68575e5de9" tabindex="0" role="button" aria-label="Play video: Wisdom Teeth This Summer">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292292-99ca0d963c2441df2bcfb85cb9c4e71b0174eec581bb306d819bd2b0c2f6e7c9-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Wisdom Teeth This Summer</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964783" data-hash="4d0495b4de" tabindex="0" role="button" aria-label="Play video: CandidPro Clear Aligners">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292308-e01e25dad7ba5418954fc7f69c1f32206099658b1558a393ef7a7d88034154f3-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">CandidPro Clear Aligners</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964688" data-hash="305bbc471e" tabindex="0" role="button" aria-label="Play video: What to Expect at a New Patient Exam">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292208-9ec44c969230e440eaa53d404d138196d4d9766501bd4afcce4fb81883f42c50-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">What to Expect: New Patient Exam</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964755" data-hash="d8658a9218" tabindex="0" role="button" aria-label="Play video: Testimonial Spotlight Myobrace">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292283-3b3d63855f961c6ec7322c739fb179524a91524ce824f5552ed6b0bc48806106-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Testimonial Spotlight: Myobrace</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964740" data-hash="b30f6e06fc" tabindex="0" role="button" aria-label="Play video: Oral Care Products in the Right Order">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292256-0f8eaaa8086d5d3013b7f6cd0477c57558f22d37cc8c1f29cd736289f90012a1-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Oral Care Products: Right Order</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964685" data-hash="375169bc11" tabindex="0" role="button" aria-label="Play video: Crowns Are Not Your Only Option">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292219-43ce5ca1b4af5c99592020ac46d3c7e9c1de65bcb2a856d3312ab1d84c19d09a-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Crowns Are Not Your Only Option</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964687" data-hash="0e2b0c7efd" tabindex="0" role="button" aria-label="Play video: Innovation Meets Tradition">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292217-130d76b88bb26e89eece3c50c129a557de59d04eb3fb0c1f7b7f700f0ee99cf8-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Innovation Meets Tradition</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964686" data-hash="2f9a6e060a" tabindex="0" role="button" aria-label="Play video: Every Way to Take a Seat">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292204-565dc58a86b974e4c818e8720d664a370b3e7382f88caae5d65738dec512629a-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Every Way to Take a Seat</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964714" data-hash="a59d642236" tabindex="0" role="button" aria-label="Play video: Rethink Root Canals">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292239-162ff419ebd98b7bc620d0d43f8afd8e0bed4f599449095b3bb7b39c4ef3b70e-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Rethink Root Canals</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964715" data-hash="2b06d79b15" tabindex="0" role="button" aria-label="Play video: Pacifiers and Thumb-Sucking">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292233-86b7079ceca169b33a2da0e3dfb2e7f05e43496931dbc7cfcc39c03f52ac3f64-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Pacifiers &amp; Thumb-Sucking</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964718" data-hash="ac3bb2c985" tabindex="0" role="button" aria-label="Play video: Silver Fillings and Mercury">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292237-65689d712460df26be0c8e423ee42c08990cc6d4aa3b197df99f7bfceccec7f0-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Silver Fillings &amp; Mercury</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964739" data-hash="25a00e15aa" tabindex="0" role="button" aria-label="Play video: Fix Bad Breath Naturally">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292258-f98954aecce9e63ec7e4f89b7ad31ab278c2b129bd871ea44de5790d41f11048-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Fix Bad Breath Naturally</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964749" data-hash="d843556f9f" tabindex="0" role="button" aria-label="Play video: Who's Most Likely To">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292278-aa04e75a20053c82185c94c35a0038351cd8b9164208151e532f359e3f236bb1-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Who's Most Likely To...</div>
+        </div>
+        <div class="reel-card" data-video-id="1219964778" data-hash="8e0546c091" tabindex="0" role="button" aria-label="Play video: More Than Just Clean Teeth">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192292314-5d23a5de18fdadea44159c5436c4e51b2e61adfbfb5bb0896e0feb89e8289f3b-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">More Than Just Clean Teeth</div>
+        </div>
+        <div class="reel-card" data-video-id="1219969930" data-hash="8a025b305a" tabindex="0" role="button" aria-label="Play video: Root Canals, What You Need to Know">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192298579-f94e0114b01e75f27edcad9041b0f47a094e52bd79ceed1c41f41b6168ea0af3-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Root Canals: What You Need to Know</div>
+        </div>
+        <div class="reel-card" data-video-id="1219969918" data-hash="1dcb03edf3" tabindex="0" role="button" aria-label="Play video: Clear Your Nose for Better Sleep">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192298556-6b21148f84d4c853be6db4ab81965b5c824f264e8991f435bc4cc5fab143c678-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Clear Your Nose for Better Sleep</div>
+        </div>
+        <div class="reel-card" data-video-id="1219969917" data-hash="d72c039046" tabindex="0" role="button" aria-label="Play video: Banish Snoring with NightLase">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192298570-9d824f2af3b93f642a8d268d310b45c6b93a2a9c5519cc7d7741628e995cda8b-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Banish Snoring with NightLase</div>
+        </div>
+        <div class="reel-card" data-video-id="1219969919" data-hash="4e60a3bb20" tabindex="0" role="button" aria-label="Play video: Patient Testimonial, Mary Lou">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192298569-1afd2b5221d8dd9ae8aa939b5ad7253ada1fadb050873ee9b9e07c7be0b56632-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Patient Testimonial: Mary Lou</div>
+        </div>
+        <div class="reel-card" data-video-id="1219969916" data-hash="b36dd78ccb" tabindex="0" role="button" aria-label="Play video: Tongue Tie?">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192298563-c14dcf3dc024949b277dd9177feaebc1bf1a9bc6b7a802663432c9fcb7a1d2b1-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Tongue Tie?</div>
+        </div>
+        <div class="reel-card" data-video-id="1219972024" data-hash="188261ccb7" tabindex="0" role="button" aria-label="Play video: Crowded Baby Teeth, The Truth">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192301245-da22cb00c25e2cf47cbbb09632a1d21416a168790cc718b0d7fcb000fe6425fe-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Crowded Baby Teeth: The Truth</div>
+        </div>
+        <div class="reel-card" data-video-id="1219972025" data-hash="0ae07c3b8d" tabindex="0" role="button" aria-label="Play video: Sugar vs Acid, What Causes Cavities">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192301192-5474111340d82e1bc93d759e7fc67809f1846ca797294b02f7632c227d8f3935-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Sugar vs. Acid: What Causes Cavities</div>
+        </div>
+        <div class="reel-card" data-video-id="1219972027" data-hash="f6d5573842" tabindex="0" role="button" aria-label="Play video: Rebuild Enamel Naturally Through Diet">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192301190-7f7d9a87233ecbcbc43c962f217ce836d372ef07d491b30d860f940f9e655211-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Rebuild Enamel Naturally Through Diet</div>
+        </div>
+        <div class="reel-card" data-video-id="1219985150" data-hash="7094e1065b" tabindex="0" role="button" aria-label="Play video: Freshen Up, Bad Breath Tips">
+          <div class="reel-thumb"><img src="https://i.vimeocdn.com/video/2192318223-5984fe6a182b7364b3e83109f899c479cfb403460b879f27d7bf2a6f5374524b-d?f=webp&region=us" alt="" loading="lazy"><span class="play-badge"></span></div>
+          <div class="reel-label">Freshen Up: Bad Breath Tips</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -268,10 +541,10 @@
 
 <script>
   (function(){
-    var cards = document.querySelectorAll('.video-card');
+    var cards = document.querySelectorAll('.video-card, .reel-card');
     cards.forEach(function(card){
       function play(){
-        var provider = card.getAttribute('data-provider') || 'youtube';
+        var provider = card.getAttribute('data-provider') || 'vimeo';
         var id = card.getAttribute('data-video-id');
         var start = card.getAttribute('data-start');
         var hash = card.getAttribute('data-hash');
@@ -281,7 +554,7 @@
         } else {
           src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&fs=1&playsinline=1' + (start ? '&start=' + start : '');
         }
-        openVideoModal(src);
+        openVideoModal(src, card.classList.contains('reel-card') ? 'portrait' : 'landscape');
       }
       card.addEventListener('click', play);
       card.addEventListener('keydown', function(e){
@@ -294,9 +567,10 @@
   })();
 
   // Shared video modal
-  function openVideoModal(src){
+  function openVideoModal(src, orientation){
     var modal = document.getElementById('videoModal');
     var frame = document.getElementById('videoModalFrame');
+    var inner = document.querySelector('.video-modal-inner');
     var iframe = document.createElement('iframe');
     iframe.src = src;
     iframe.title = 'Video player';
@@ -305,6 +579,11 @@
     iframe.allowFullscreen = true;
     frame.innerHTML = '';
     frame.appendChild(iframe);
+    if(orientation === 'portrait'){
+      inner.classList.add('portrait');
+    } else {
+      inner.classList.remove('portrait');
+    }
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -323,6 +602,7 @@
     if(e.key === 'Escape') closeVideoModal();
   });
 </script>
+
 
 </body>
 </html>
