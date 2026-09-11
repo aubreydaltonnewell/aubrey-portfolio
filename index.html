@@ -192,6 +192,11 @@
   @media (max-width:820px){.about-grid{grid-template-columns:1fr;}}
   .about-text p{color:var(--text); font-size:17px; margin-bottom:20px; max-width:60ch;}
   .about-text p.lead{font-size:20px; color:var(--text);}
+  .profile-photo{
+    width:132px; height:132px; border-radius:50%; object-fit:cover;
+    border:2px solid var(--amber); margin-bottom:28px;
+    filter:grayscale(15%);
+  }
   .tools-label{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:14px; display:block;}
   .tool-group{margin-bottom:24px;}
   .tags{display:flex; flex-wrap:wrap; gap:8px;}
@@ -337,6 +342,7 @@
       </div>
       <div class="about-grid">
         <div class="about-text">
+          <img src="assets/aubrey-photo.png" alt="Aubrey Dalton Newell" class="profile-photo">
           <p class="lead">Hi, I'm Aubrey Dalton Newell. With more than two decades of experience in media production, I lead video, photography, and brand content for a multi-brand healthcare and wellness organization — creating everything from patient education videos to full campaign content across social channels.</p>
           <p>What I love most is helping share a message that matters: that answers can be found for people's health and wellness. Being part of that story is what makes this work meaningful to me.</p>
           <p>Outside of client and brand work, I'm an independent filmmaker with an award-winning background — competition wins and festival selections for short films and commercial work shaped how I think about story, pacing, and audience connection in everything I direct.</p>
