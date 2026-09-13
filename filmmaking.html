@@ -109,6 +109,18 @@
   footer{border-top:1px solid var(--line); padding:32px 0;}
   .footer-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
 
+  .clients-list{
+    column-count:3; column-gap:32px;
+  }
+  @media (max-width:820px){.clients-list{column-count:2;}}
+  @media (max-width:520px){.clients-list{column-count:1;}}
+  .clients-list li{
+    font-size:15px; color:var(--text); padding:9px 0;
+    border-bottom:1px solid var(--line);
+    break-inside:avoid;
+    list-style:none;
+  }
+
   .video-modal{position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; padding:16px;}
   .video-modal.open{display:flex;}
   .video-modal-backdrop{position:absolute; inset:0; background:rgba(6,6,7,.92);}
@@ -150,7 +162,7 @@
   </section>
 
   <div class="meta-strip">
-    <div class="wrap" style="display:flex; padding:0;">
+    <div class="wrap" style="display:flex; flex-wrap:wrap; padding:0;">
       <div class="meta-item">
         <span class="meta-k">Role</span>
         <span class="meta-v">Producer, Director, Writer, Director of Photography, Camera Operator, and Editor</span>
@@ -166,7 +178,17 @@
     </div>
   </div>
 
-  <section>
+  <section style="padding-top:48px; padding-bottom:32px;">
+    <div class="wrap prose">
+      <h2 class="section-title">About the Work</h2>
+      <p>Outside of brand and client work, I'm an independent filmmaker and commercial director with more than two decades behind the camera, producing, directing, shooting, and editing commercials, short films, music videos, B2B productions, and an award-winning feature-length documentary.</p>
+      <p>I've directed or contributed to 80+ productions, working with a local production company to shoot and produce ads for over 40 businesses, helping each one stand out and connect with their market. That range, from 24-hour film marathons to national brand commercial work, has sharpened a versatility most single-lane specialists never develop: I can walk onto a set as director, step behind the camera as cinematographer, or sit down in the edit bay, and deliver at a professional level in any of those roles.</p>
+      <p>Watch the reels below for a curated look at both sides of that work: video production and creative direction.</p>
+      <p>That independent filmmaking background is also what shapes my client work. The instinct for story, pacing, and audience connection I built directing narrative film is the same instinct I bring to a YouTube channel, a product launch video, or a brand campaign, because good storytelling follows the same rules no matter who's paying for it.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
     <div class="wrap">
       <h2 class="section-title">Demo Reels</h2>
       <div class="video-grid">
@@ -184,6 +206,27 @@
           </div>
           <div class="video-label">Creative Direction Reel</div>
         </div>
+        <div class="video-card" data-provider="youtube" data-video-id="hEP4E9jiV-k" tabindex="0" role="button" aria-label="Play video: Producer, Director, Writer, Commercial">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/hEP4E9jiV-k/hqdefault.jpg" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Producer, Director, Writer — Commercial</div>
+        </div>
+        <div class="video-card" data-provider="youtube" data-video-id="NMxkfWhzEj8" tabindex="0" role="button" aria-label="Play video: Camera Operator">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/NMxkfWhzEj8/hqdefault.jpg" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Camera Operator</div>
+        </div>
+        <div class="video-card" data-provider="vimeo" data-video-id="80342262" data-hash="42f7a8c3e3" tabindex="0" role="button" aria-label="Play video: Cinematographer, The Tinaja Trail">
+          <div class="video-thumb">
+            <img src="https://i.vimeocdn.com/video/471845142-4dd414ca58420b2b81afac5e14c2741d8542f5d19f323066f51aab6aa426c8fd-d?f=webp&amp;region=us" alt="" loading="lazy">
+            <span class="play-badge"></span>
+          </div>
+          <div class="video-label">Cinematographer — The Tinaja Trail</div>
+        </div>
       </div>
     </div>
   </section>
@@ -195,14 +238,80 @@
     </div>
   </section>
 
-  <section style="padding-top:0;">
-    <div class="wrap prose">
-      <h2 class="section-title">About the Work</h2>
-      <p>The two reels above pull together highlights from across my career — one focused on video production (cinematography, editing, and technical craft), the other on creative direction (concept, story, and visual leadership on set).</p>
-      <p>Outside of client and brand work, I'm an independent filmmaker with a background spanning commercial videos, short films, live productions, and an award-winning feature-length documentary across more than two decades — 80+ projects and counting. That background shapes how I think about story, pacing, and audience connection in everything I direct, from client campaigns to long-form YouTube content.</p>
-      <p>I've also worked with a local production company to shoot and produce ads for over 40 other local businesses, helping each client stand out in their market.</p>
+  <section style="padding-top:48px;">
+    <div class="wrap">
+      <h2 class="section-title">Businesses Featured in My Production Work</h2>
+      <ul class="clients-list">
+        <li>Pepsi Co</li>
+        <li>Doterra</li>
+        <li>The University of Utah</li>
+        <li>Weber State University</li>
+        <li>Utah Valley University</li>
+        <li>Utah Safety Council</li>
+        <li>PRSSA</li>
+        <li>Humanitarian Film Initiative</li>
+        <li>Project Amigo</li>
+        <li>Total Care Dental</li>
+        <li>SuperGrin Orthodontics</li>
+        <li>Wiest Dental</li>
+        <li>CrossFitXD</li>
+        <li>EXL Fitness &amp; Performance</li>
+        <li>True REST Float Spa</li>
+        <li>Water and Wellness</li>
+        <li>Summit Spa and Float</li>
+        <li>Ivy Hall Academy of Provo</li>
+        <li>Daily Dose Learning Systems</li>
+        <li>Clyde Group Real Estate</li>
+        <li>Zander Real Estate</li>
+        <li>Amara Day Spa and Salon</li>
+        <li>Taylor Carpets</li>
+        <li>VR Junkies</li>
+        <li>True North Axe Throwing</li>
+        <li>SunSational Home Improvement</li>
+        <li>M-Tech Automotive</li>
+        <li>Rocky's Tire Pros</li>
+        <li>Image Home Decor</li>
+        <li>Pro Digital Photos</li>
+        <li>Coconut Cove</li>
+        <li>Keto Chow</li>
+        <li>Lulu Patch</li>
+        <li>Provo Beach</li>
+        <li>The Strike Zone</li>
+        <li>The Heating and Cooling Guys</li>
+        <li>A Auto Repair</li>
+        <li>Fence Specialist</li>
+        <li>Chubby's Cafe</li>
+        <li>Flirty Home</li>
+        <li>My Pride Tattoo</li>
+        <li>Strider Security</li>
+        <li>Red Fox Furnishing</li>
+        <li>AF Connect</li>
+        <li>NOE Bullet Moulds</li>
+        <li>West Lake Pharmacy</li>
+        <li>Wasatch View Eye Care</li>
+        <li>DJ Auto</li>
+        <li>Pro Audio - Pro 4x4</li>
+        <li>Thrive Nursery</li>
+        <li>Bill Harris Music</li>
+        <li>Image Makers Salon</li>
+        <li>Goo Goo Dogs</li>
+        <li>Perfectly Suited by Garth</li>
+        <li>Harris Hearing Aids</li>
+        <li>Glass Rooster Cannery</li>
+        <li>Roll Up Crepe</li>
+        <li>Modern Missionary</li>
+        <li>Something Borrowed Bridals</li>
+        <li>Jigawatt Cycles</li>
+        <li>One Man Band</li>
+        <li>McCoard's Garden</li>
+        <li>FORGE Jewelry Works</li>
+        <li>Pat's BBQ</li>
+        <li>Reed's Dairy</li>
+        <li>That Late Show with Cassidy Hilton</li>
+      </ul>
     </div>
   </section>
+
 </main>
 
 <footer>
@@ -225,8 +334,15 @@
     var cards = document.querySelectorAll('.video-card');
     cards.forEach(function(card){
       function play(){
+        var provider = card.getAttribute('data-provider') || 'youtube';
         var id = card.getAttribute('data-video-id');
-        var src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&fs=1&playsinline=1';
+        var hash = card.getAttribute('data-hash');
+        var src;
+        if(provider === 'vimeo'){
+          src = 'https://player.vimeo.com/video/' + id + '?' + (hash ? 'h=' + hash + '&' : '') + 'autoplay=1&title=0&byline=0&portrait=0&dnt=1&transparent=0';
+        } else {
+          src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&fs=1&playsinline=1';
+        }
         openVideoModal(src);
       }
       card.addEventListener('click', play);
