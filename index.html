@@ -70,12 +70,28 @@
     height:100%; width:0%; background:linear-gradient(90deg,var(--amber),var(--cyan));
     transition:width .05s linear;
   }
-  .menu-toggle{display:none; background:none; border:1px solid var(--line); color:var(--text); font-family:'JetBrains Mono',monospace; font-size:12px; padding:6px 10px; border-radius:3px;}
+  .menu-toggle{display:none; background:none; border:1px solid var(--line); color:var(--text); font-family:'JetBrains Mono',monospace; font-size:12px; padding:6px 10px; border-radius:3px; cursor:pointer;}
+  .menu-toggle[aria-expanded="true"]{border-color:var(--amber); color:var(--amber);}
+
+  .mobile-menu{
+    display:none; flex-direction:column;
+    background:var(--bg); border-top:1px solid var(--line);
+    max-height:0; overflow:hidden;
+    transition:max-height .2s ease;
+  }
+  .mobile-menu.open{max-height:260px;}
+  .mobile-menu a{
+    display:block; padding:16px 32px;
+    font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--muted); border-bottom:1px solid var(--line);
+  }
+  .mobile-menu a:hover, .mobile-menu a:focus-visible{color:var(--amber);}
 
   @media (max-width:820px){
     .chapters{display:none;}
     .menu-toggle{display:inline-block;}
     .timecode-readout{display:none;}
+    .mobile-menu{display:flex;}
   }
 
   /* ---------- Hero ---------- */
@@ -120,6 +136,8 @@
   @media (max-width:820px){
     .hero-columns{flex-direction:column-reverse; align-items:center; gap:28px;}
     .hero-photo{width:220px; height:auto; max-width:none;}
+    .hero{padding:32px 0 48px;}
+    section{padding:44px 0;}
   }
   .btn{
     display:inline-flex; align-items:center; gap:10px;
@@ -249,9 +267,15 @@
       <span class="rec-dot" aria-hidden="true"></span>
       <span id="tc-current">00:00</span><span>/</span><span id="tc-total">03:47</span>
     </div>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">MENU</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">MENU</button>
   </div>
   <div class="seekbar"><div class="seekbar-fill" id="seekFill"></div></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#awards">Awards</a>
+    <a href="#contact">Contact</a>
+  </div>
 </div>
 
 <main id="top">
@@ -461,14 +485,29 @@
     onScroll();
   })();
 
-  // Simple mobile menu: jump-to chapter select fallback
-  document.getElementById('menuToggle').addEventListener('click', function(){
-    var target = prompt('Jump to: work, about, awards, or contact');
-    if(target){
-      var el = document.getElementById(target.trim().toLowerCase());
-      if(el) el.scrollIntoView({behavior:'smooth'});
+  // Mobile menu: toggle dropdown panel
+  (function(){
+    var toggle = document.getElementById('menuToggle');
+    var menu = document.getElementById('mobileMenu');
+    function closeMenu(){
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
     }
-  });
+    function openMenu(){
+      menu.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+    toggle.addEventListener('click', function(){
+      var isOpen = menu.classList.contains('open');
+      if(isOpen) closeMenu(); else openMenu();
+    });
+    menu.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeMenu();
+    });
+  })();
 </script>
 
 </body>
