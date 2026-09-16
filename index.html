@@ -231,12 +231,25 @@
 
   /* ---------- Awards strip ---------- */
   .awards{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+
+  .testimonial-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--line); border:1px solid var(--line);}
+  @media (max-width:820px){
+    .testimonial-grid{grid-template-columns:1fr;}
+    .testimonial-card[aria-hidden="true"]{display:none;}
+  }
+  .testimonial-card{background:var(--bg); padding:32px;}
+  .testimonial-quote{font-size:16px; line-height:1.6; color:var(--text); margin-bottom:20px;}
+  .testimonial-quote::before{content:"\201C"; color:var(--amber); font-family:'Anton',sans-serif; font-size:28px; line-height:0; position:relative; top:8px; margin-right:2px;}
+  .testimonial-name{font-weight:700; font-size:14px; color:var(--text);}
+  .testimonial-title{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-top:4px;}
+  .testimonial-company{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--amber); text-transform:uppercase; letter-spacing:.05em;}
   .awards-inner{display:flex; align-items:center; gap:40px; flex-wrap:wrap;}
   .awards-badge{
     font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
     border:1px solid var(--amber); color:var(--amber); padding:8px 14px; border-radius:2px; white-space:nowrap;
   }
-  .awards-text{color:var(--muted); font-size:15px; max-width:60ch;}
+  .awards-text{color:var(--muted); font-size:15px; max-width:66ch; margin-bottom:16px;}
+  .awards-text:last-child{margin-bottom:0;}
 
   /* ---------- Contact ---------- */
   .contact{text-align:left;}
@@ -294,7 +307,7 @@
         <div class="hero-copy">
           <h1 class="hero-title">AUBREY<br>DALTON <span class="accent">NEWELL</span></h1>
           <p class="hero-role">Creative Director · Video Producer · Cinematographer · Editor</p>
-          <p class="hero-sub">More than two decades leading creative direction and video production for multi-brand healthcare, wellness, and education companies, shaping brand strategy and visual identity from concept through final cut. Outside client work, I direct independent film with an award-winning background.</p>
+          <p class="hero-sub">I'm a creative director and filmmaker with more than two decades of experience building brands through strategy, visual identity, and compelling storytelling. I've led creative direction and production across healthcare, wellness, education, and consumer brands, guiding projects from the initial concept through production, post-production, and final delivery. As an independent filmmaker, I bring a cinematic perspective to every brand, story, and creative challenge.</p>
           <div class="hero-ctas">
             <a class="btn primary" href="#work"><span class="play-icon" aria-hidden="true"></span> View Selected Work</a>
             <a class="btn" href="#contact">Get In Touch</a>
@@ -358,7 +371,7 @@
       <a href="filmmaking.html" class="frame frame-4">
         <div class="frame-slate">SCENE 04 <span>·</span> COMMERCIAL WORK</div>
         <div class="frame-title">Filmmaking &amp; Commercial Work</div>
-        <p class="frame-desc">80+ award-winning commercials, short films, music videos, B2B productions, and an award-winning feature-length documentary over more than two decades.</p>
+        <p class="frame-desc">80+ commercials, short films, music videos, and an award-winning feature-length documentary, earning competition wins and festival selections across more than two decades.</p>
         <span class="frame-cta">View Project <span aria-hidden="true">→</span></span>
       </a>
     </div>
@@ -369,16 +382,15 @@
       <div class="section-head">
         <div>
           <span class="section-eyebrow">About</span>
-          <h2 class="section-title">The Person Behind the Camera</h2>
+          <h2 class="section-title">About Me</h2>
         </div>
       </div>
       <div class="about-grid">
         <div class="about-text">
-          <p class="lead">I'm A. Dalton Newell, a creative director and filmmaker with more than two decades of experience in video production and storytelling. My work spans directing, producing, cinematography, writing, editing, photography, and digital content.</p>
-          <p>Over the past seven years, I've led creative and marketing direction for a multi-brand healthcare and wellness organization, growing one brand's social following from under 100 to more than 15,000 and taking a companion YouTube channel from under 1,000 subscribers to over 200,000, generating 31.8 million views and more than 856,000 hours watched.</p>
-          <p>I've also contributed content to a companion Instagram channel that has grown to 379,000+ followers, helped launch more than a dozen products, and built an in-house production studio to support it all at scale.</p>
-          <p>I believe visual storytelling is one of the most powerful tools a brand has to communicate who they are, connect with their audience, and make a lasting impact. That's the standard I bring to every project, whether it's a patient education video, a product launch, or a national ad campaign.</p>
-          <p>Outside of client and brand work, I'm an independent filmmaker with an award-winning background. Competition wins and festival selections for short films and commercial work shaped how I think about story, pacing, and audience connection in everything I direct.</p>
+          <p>I've been telling stories through a camera for most of my life. Inspired early by filmmakers such as Alfred Hitchcock and Steven Spielberg, I began casting family and friends in short films made with my father's Hi8 camcorder. By age 14, my first festival film had screened at five regional festivals. At 16, another short earned second place at the Kiwanis Teen Film Festival. Those early experiences gave me more than a love of filmmaking. They taught me how a strong idea, clearly told, can connect with an audience.</p>
+          <p>Over the past two decades, I've contributed to more than 80 productions as a creative director, producer, director, cinematographer, writer, editor, and camera operator. My work has included commercials, short films, music videos, live events, corporate productions, major broadcast content, and an award-winning feature-length documentary. Along the way, I've helped businesses, universities, nonprofits, healthcare organizations, and consumer brands communicate what makes their work meaningful.</p>
+          <p>For the past seven years, I've led creative and marketing work for Total Care Dental & Wellness, Total Care Kids, and Living Well with Dr. Michelle. I've helped shape brand identities, build content strategies, launch products, develop websites, create advertising campaigns, and establish an in-house production studio. That work helped grow a YouTube channel from under 1,000 subscribers to more than 200,000, generating 31.8 million views and over 856,000 hours of watch time.</p>
+          <p>What I bring to every project is the ability to see both the larger creative vision and the details required to deliver it. I can develop the strategy, shape the message, lead the team, direct the production, step behind the camera, and guide the work through post-production. Whether I'm creating a brand campaign, product launch, educational series, or independent film, my goal remains the same: tell a clear, compelling story that connects with people and moves them to act.</p>
         </div>
         <div>
           <div class="tool-group">
@@ -420,10 +432,51 @@
     </div>
   </section>
 
+  <section id="testimonials">
+    <div class="wrap">
+      <h2 class="section-title">Testimonials</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-quote">Without hesitation, I give my highest recommendation to Aubrey Newell. He has gained my trust and the trust of all those around him. His friendly, professional demeanor complements his professional skills and customer service excellence.</p>
+          <div class="testimonial-name">Carl Wayman</div>
+          <div class="testimonial-title">Manager of Digital Media Publishing</div>
+          <div class="testimonial-company">The Church of Jesus Christ of Latter-day Saints</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-quote">Aubrey consistently demonstrated an ability to combine creativity with strong execution. He is skilled at developing effective marketing campaigns, bringing ideas from initial concept through implementation, and following through on the many details necessary to achieve a successful result.</p>
+          <div class="testimonial-name">Kris McKinley</div>
+          <div class="testimonial-title">Former HR &amp; Executive Services Director</div>
+          <div class="testimonial-company">Total Care Dental &amp; Wellness</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-quote">Aubrey is my go-to for all my digital media needs. He can take a project from beginning to end and make things happen.</p>
+          <div class="testimonial-name">Joseph Jamesen</div>
+          <div class="testimonial-title">CEO</div>
+          <div class="testimonial-company">Superior Dueling Trees</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-quote">Aubrey has done a fantastic job designing and supporting an automated process for burning in subtitles. This process has significantly increased productivity and efficiency on subtitling projects.</p>
+          <div class="testimonial-name">Nate Woodward</div>
+          <div class="testimonial-title">Language Producer</div>
+          <div class="testimonial-company">The Church of Jesus Christ of Latter-day Saints</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-quote">I enthusiastically recommend Aubrey for employment where his digital media and video production skills can be put to use.</p>
+          <div class="testimonial-name">Arlen L. Card</div>
+          <div class="testimonial-title">Assistant Professor</div>
+          <div class="testimonial-company">Utah Valley University</div>
+        </div>
+        <div class="testimonial-card" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
   <section id="awards" class="awards">
-    <div class="wrap awards-inner">
-      <span class="awards-badge">Award-Winning Filmmaker</span>
-      <p class="awards-text">Independent filmmaker with an award-winning background, including multiple competition wins and film festival selections for short films, commercial work, and an award-winning feature-length documentary across more than two decades. Full filmography and reel available on request.</p>
+    <div class="wrap">
+      <span class="section-eyebrow">Recognition</span>
+      <h2 class="section-title">Awards &amp; Festival Recognition</h2>
+      <p class="awards-text">Competition recognition includes first, second, and third-place finishes in UVU's Do the Dew Commercial Competition; third place and an honorable mention in the LDS Film Festival 24-Hour Film Marathon; second place at the Kiwanis Film Festival; and recognition as a script finalist at Utah Valley University.</p>
+      <p class="awards-text">Official selections and screenings include the Arizona International, Sunscreen, Gasparilla International, LDS, Thunderbird, SpudFest, LocoMotive, Just Dance International, and Kiwanis film festivals.</p>
     </div>
   </section>
 
